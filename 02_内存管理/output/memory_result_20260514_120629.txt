@@ -1,0 +1,229 @@
+算法: FIFO 页面置换
+页框数: 3
+访问页面 7:
+  缺页，装入空闲页框 0。
+  页框: [7 - -]
+访问页面 0:
+  缺页，装入空闲页框 1。
+  页框: [7 0 -]
+访问页面 1:
+  缺页，装入空闲页框 2。
+  页框: [7 0 1]
+访问页面 2:
+  缺页，淘汰页框 0 中的页面 7。
+  页框: [2 0 1]
+访问页面 0:
+  命中，无需置换。
+  页框: [2 0 1]
+访问页面 3:
+  缺页，淘汰页框 1 中的页面 0。
+  页框: [2 3 1]
+访问页面 0:
+  缺页，淘汰页框 2 中的页面 1。
+  页框: [2 3 0]
+访问页面 4:
+  缺页，淘汰页框 0 中的页面 2。
+  页框: [4 3 0]
+访问页面 2:
+  缺页，淘汰页框 1 中的页面 3。
+  页框: [4 2 0]
+访问页面 3:
+  缺页，淘汰页框 2 中的页面 0。
+  页框: [4 2 3]
+访问页面 0:
+  缺页，淘汰页框 0 中的页面 4。
+  页框: [0 2 3]
+访问页面 3:
+  命中，无需置换。
+  页框: [0 2 3]
+访问页面 2:
+  命中，无需置换。
+  页框: [0 2 3]
+
+缺页次数: 10
+缺页率: 76.92%
+
+========================================================================
+
+算法: LRU 页面置换
+页框数: 3
+访问页面 7:
+  缺页，装入空闲页框 0。
+  页框: [7 - -]
+访问页面 0:
+  缺页，装入空闲页框 1。
+  页框: [7 0 -]
+访问页面 1:
+  缺页，装入空闲页框 2。
+  页框: [7 0 1]
+访问页面 2:
+  缺页，淘汰最近最久未使用页面 7。
+  页框: [2 0 1]
+访问页面 0:
+  命中，更新最近使用时间。
+  页框: [2 0 1]
+访问页面 3:
+  缺页，淘汰最近最久未使用页面 1。
+  页框: [2 0 3]
+访问页面 0:
+  命中，更新最近使用时间。
+  页框: [2 0 3]
+访问页面 4:
+  缺页，淘汰最近最久未使用页面 2。
+  页框: [4 0 3]
+访问页面 2:
+  缺页，淘汰最近最久未使用页面 3。
+  页框: [4 0 2]
+访问页面 3:
+  缺页，淘汰最近最久未使用页面 0。
+  页框: [4 3 2]
+访问页面 0:
+  缺页，淘汰最近最久未使用页面 4。
+  页框: [0 3 2]
+访问页面 3:
+  命中，更新最近使用时间。
+  页框: [0 3 2]
+访问页面 2:
+  命中，更新最近使用时间。
+  页框: [0 3 2]
+
+缺页次数: 9
+缺页率: 69.23%
+
+========================================================================
+
+算法: FF 动态分区分配
+总内存大小: 100
+操作: alloc A 20
+  分配成功: A 占用 20 单位内存。
+当前分区状态:
+  [0] start=0 size=20 status=used owner=A
+  [1] start=20 size=80 status=free owner=-
+操作: alloc B 35
+  分配成功: B 占用 35 单位内存。
+当前分区状态:
+  [0] start=0 size=20 status=used owner=A
+  [1] start=20 size=35 status=used owner=B
+  [2] start=55 size=45 status=free owner=-
+操作: alloc C 15
+  分配成功: C 占用 15 单位内存。
+当前分区状态:
+  [0] start=0 size=20 status=used owner=A
+  [1] start=20 size=35 status=used owner=B
+  [2] start=55 size=15 status=used owner=C
+  [3] start=70 size=30 status=free owner=-
+操作: free B
+  释放成功: B 的分区已回收并尝试合并。
+当前分区状态:
+  [0] start=0 size=20 status=used owner=A
+  [1] start=20 size=35 status=free owner=-
+  [2] start=55 size=15 status=used owner=C
+  [3] start=70 size=30 status=free owner=-
+操作: alloc D 18
+  分配成功: D 占用 18 单位内存。
+当前分区状态:
+  [0] start=0 size=20 status=used owner=A
+  [1] start=20 size=18 status=used owner=D
+  [2] start=38 size=17 status=free owner=-
+  [3] start=55 size=15 status=used owner=C
+  [4] start=70 size=30 status=free owner=-
+操作: free A
+  释放成功: A 的分区已回收并尝试合并。
+当前分区状态:
+  [0] start=0 size=20 status=free owner=-
+  [1] start=20 size=18 status=used owner=D
+  [2] start=38 size=17 status=free owner=-
+  [3] start=55 size=15 status=used owner=C
+  [4] start=70 size=30 status=free owner=-
+操作: alloc E 10
+  分配成功: E 占用 10 单位内存。
+当前分区状态:
+  [0] start=0 size=10 status=used owner=E
+  [1] start=10 size=10 status=free owner=-
+  [2] start=20 size=18 status=used owner=D
+  [3] start=38 size=17 status=free owner=-
+  [4] start=55 size=15 status=used owner=C
+  [5] start=70 size=30 status=free owner=-
+操作: free C
+  释放成功: C 的分区已回收并尝试合并。
+当前分区状态:
+  [0] start=0 size=10 status=used owner=E
+  [1] start=10 size=10 status=free owner=-
+  [2] start=20 size=18 status=used owner=D
+  [3] start=38 size=62 status=free owner=-
+操作: alloc F 30
+  分配成功: F 占用 30 单位内存。
+当前分区状态:
+  [0] start=0 size=10 status=used owner=E
+  [1] start=10 size=10 status=free owner=-
+  [2] start=20 size=18 status=used owner=D
+  [3] start=38 size=30 status=used owner=F
+  [4] start=68 size=32 status=free owner=-
+
+========================================================================
+
+算法: BF 动态分区分配
+总内存大小: 100
+操作: alloc A 20
+  分配成功: A 占用 20 单位内存。
+当前分区状态:
+  [0] start=0 size=20 status=used owner=A
+  [1] start=20 size=80 status=free owner=-
+操作: alloc B 35
+  分配成功: B 占用 35 单位内存。
+当前分区状态:
+  [0] start=0 size=20 status=used owner=A
+  [1] start=20 size=35 status=used owner=B
+  [2] start=55 size=45 status=free owner=-
+操作: alloc C 15
+  分配成功: C 占用 15 单位内存。
+当前分区状态:
+  [0] start=0 size=20 status=used owner=A
+  [1] start=20 size=35 status=used owner=B
+  [2] start=55 size=15 status=used owner=C
+  [3] start=70 size=30 status=free owner=-
+操作: free B
+  释放成功: B 的分区已回收并尝试合并。
+当前分区状态:
+  [0] start=0 size=20 status=used owner=A
+  [1] start=20 size=35 status=free owner=-
+  [2] start=55 size=15 status=used owner=C
+  [3] start=70 size=30 status=free owner=-
+操作: alloc D 18
+  分配成功: D 占用 18 单位内存。
+当前分区状态:
+  [0] start=0 size=20 status=used owner=A
+  [1] start=20 size=35 status=free owner=-
+  [2] start=55 size=15 status=used owner=C
+  [3] start=70 size=18 status=used owner=D
+  [4] start=88 size=12 status=free owner=-
+操作: free A
+  释放成功: A 的分区已回收并尝试合并。
+当前分区状态:
+  [0] start=0 size=55 status=free owner=-
+  [1] start=55 size=15 status=used owner=C
+  [2] start=70 size=18 status=used owner=D
+  [3] start=88 size=12 status=free owner=-
+操作: alloc E 10
+  分配成功: E 占用 10 单位内存。
+当前分区状态:
+  [0] start=0 size=55 status=free owner=-
+  [1] start=55 size=15 status=used owner=C
+  [2] start=70 size=18 status=used owner=D
+  [3] start=88 size=10 status=used owner=E
+  [4] start=98 size=2 status=free owner=-
+操作: free C
+  释放成功: C 的分区已回收并尝试合并。
+当前分区状态:
+  [0] start=0 size=70 status=free owner=-
+  [1] start=70 size=18 status=used owner=D
+  [2] start=88 size=10 status=used owner=E
+  [3] start=98 size=2 status=free owner=-
+操作: alloc F 30
+  分配成功: F 占用 30 单位内存。
+当前分区状态:
+  [0] start=0 size=30 status=used owner=F
+  [1] start=30 size=40 status=free owner=-
+  [2] start=70 size=18 status=used owner=D
+  [3] start=88 size=10 status=used owner=E
+  [4] start=98 size=2 status=free owner=-

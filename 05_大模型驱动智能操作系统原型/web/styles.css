@@ -1,0 +1,139 @@
+:root {
+  --bg: #f6f0e8;
+  --ink: #17212b;
+  --panel: #fffaf4;
+  --accent: #0f766e;
+  --accent-soft: #d8efe9;
+  --line: #d7c9b8;
+  --shadow: rgba(23, 33, 43, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Georgia", "Noto Serif SC", serif;
+  background:
+    radial-gradient(circle at top left, #f9d8a7 0, transparent 35%),
+    linear-gradient(135deg, #f6f0e8 0%, #efe4d4 100%);
+  color: var(--ink);
+}
+
+.page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+
+.hero {
+  margin-bottom: 26px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-size: 12px;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1.05;
+}
+
+.subtitle {
+  max-width: 760px;
+  font-size: 18px;
+  line-height: 1.7;
+  margin-top: 16px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px var(--shadow);
+  padding: 20px;
+}
+
+.input-panel {
+  margin-bottom: 24px;
+}
+
+label,
+h2 {
+  display: block;
+  margin: 0 0 12px;
+}
+
+textarea {
+  width: 100%;
+  min-height: 140px;
+  resize: vertical;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+  font-size: 16px;
+  background: #fff;
+}
+
+.actions {
+  margin-top: 16px;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-size: 16px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.hint {
+  margin: 12px 0 0;
+  color: #5f5b56;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.wide {
+  grid-column: 1 / -1;
+}
+
+pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #f8f5ef;
+  border-radius: 14px;
+  padding: 14px;
+  min-height: 120px;
+  overflow: auto;
+  font-family: "Consolas", "Courier New", monospace;
+  line-height: 1.6;
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wide {
+    grid-column: auto;
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "server_host": "127.0.0.1",
+  "server_port": 8899,
+  "deepseek_api_key": "请填入你的DeepSeek API Key",
+  "deepseek_base_url": "https://api.deepseek.com",
+  "deepseek_model": "deepseek-v4-flash",
+  "wsl_distro": "Ubuntu"
+}

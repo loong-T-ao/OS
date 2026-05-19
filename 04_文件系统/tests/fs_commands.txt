@@ -1,0 +1,15 @@
+mkdir docs
+cd docs
+create report
+write report OperatingSystemCourseDesign
+read report
+ls
+cd ..
+mkdir temp
+cd temp
+create log
+write log hello_kernel_world
+status
+cd ..
+delete docs/report
+status

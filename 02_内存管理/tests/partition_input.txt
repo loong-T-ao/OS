@@ -1,0 +1,10 @@
+100
+alloc A 20
+alloc B 35
+alloc C 15
+free B
+alloc D 18
+free A
+alloc E 10
+free C
+alloc F 30

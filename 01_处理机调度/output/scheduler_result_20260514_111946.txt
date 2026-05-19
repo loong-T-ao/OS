@@ -1,0 +1,77 @@
+算法: FCFS
+执行顺序:
+  time 0 -> 4: P1
+  time 4 -> 7: P2
+  time 7 -> 12: P3
+  time 12 -> 14: P4
+
+进程结果:
+  name  arrival  burst  priority  start  finish  turnaround  weighted_turnaround
+  P1    0       4     2        0     4      4          1.00
+  P2    1       3     1        4     7      6          2.00
+  P3    2       5     4        7     12     10         2.00
+  P4    3       2     3        12    14     11         5.50
+
+平均周转时间: 7.75
+平均带权周转时间: 2.62
+
+========================================================================
+
+算法: SJF
+执行顺序:
+  time 0 -> 4: P1
+  time 4 -> 6: P4
+  time 6 -> 9: P2
+  time 9 -> 14: P3
+
+进程结果:
+  name  arrival  burst  priority  start  finish  turnaround  weighted_turnaround
+  P1    0       4     2        0     4      4          1.00
+  P2    1       3     1        6     9      8          2.67
+  P3    2       5     4        9     14     12         2.40
+  P4    3       2     3        4     6      3          1.50
+
+平均周转时间: 6.75
+平均带权周转时间: 1.89
+
+========================================================================
+
+算法: RR
+执行顺序:
+  time 0 -> 2: P1
+  time 2 -> 4: P2
+  time 4 -> 6: P3
+  time 6 -> 8: P1
+  time 8 -> 10: P4
+  time 10 -> 11: P2
+  time 11 -> 13: P3
+  time 13 -> 14: P3
+
+进程结果:
+  name  arrival  burst  priority  start  finish  turnaround  weighted_turnaround
+  P1    0       4     2        0     8      8          2.00
+  P2    1       3     1        2     11     10         3.33
+  P3    2       5     4        4     14     12         2.40
+  P4    3       2     3        8     10     7          3.50
+
+平均周转时间: 9.25
+平均带权周转时间: 2.81
+
+========================================================================
+
+算法: Priority
+执行顺序:
+  time 0 -> 4: P1
+  time 4 -> 7: P2
+  time 7 -> 9: P4
+  time 9 -> 14: P3
+
+进程结果:
+  name  arrival  burst  priority  start  finish  turnaround  weighted_turnaround
+  P1    0       4     2        0     4      4          1.00
+  P2    1       3     1        4     7      6          2.00
+  P3    2       5     4        9     14     12         2.40
+  P4    3       2     3        7     9      6          3.00
+
+平均周转时间: 7.00
+平均带权周转时间: 2.10

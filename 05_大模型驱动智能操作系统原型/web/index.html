@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>大模型驱动的智能操作系统原型</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">Operating Systems + LLM</p>
+      <h1>大模型驱动的智能操作系统原型</h1>
+      <p class="subtitle">
+        输入自然语言实验需求，系统先做边界校验，再解析参数、调用基础模块，并给出 AI 实验分析。
+      </p>
+    </section>
+
+    <section class="panel input-panel">
+      <label for="message">实验请求</label>
+      <textarea
+        id="message"
+        placeholder="例如：请创建 4 个进程，使用时间片轮转算法，时间片为 2，并比较调度结果。"
+      ></textarea>
+      <div class="actions">
+        <button id="runButton">开始执行</button>
+      </div>
+      <p class="hint">只支持操作系统课程实验相关请求，超出范围会被边界代理拒绝。</p>
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <h2>边界代理结果</h2>
+        <pre id="guardrail">等待输入...</pre>
+      </article>
+      <article class="panel">
+        <h2>结构化任务</h2>
+        <pre id="structured">等待输入...</pre>
+      </article>
+      <article class="panel wide">
+        <h2>基础模块原始输出</h2>
+        <pre id="rawOutput">等待执行...</pre>
+      </article>
+      <article class="panel wide">
+        <h2>AI 分析结论</h2>
+        <pre id="analysis">等待执行...</pre>
+      </article>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

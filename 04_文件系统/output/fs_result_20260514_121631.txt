@@ -1,0 +1,64 @@
+命令: mkdir docs
+mkdir 成功: 创建目录 docs。
+
+命令: cd docs
+cd 成功: 进入目录 docs。
+
+命令: create report
+create 成功: 创建文件 report。
+
+命令: write report OperatingSystemCourseDesign
+write 成功: 文件 report 写入 27 字节，占用 4 个块。
+
+命令: read report
+read 成功: report -> OperatingSystemCourseDesign
+  占用块: 0 1 2 3
+
+命令: ls
+当前目录内容:
+  [FILE] report
+
+命令: cd ..
+cd 成功: 返回上级目录 root。
+
+命令: mkdir temp
+mkdir 成功: 创建目录 temp。
+
+命令: cd temp
+cd 成功: 进入目录 temp。
+
+命令: create log
+create 成功: 创建文件 log。
+
+命令: write log hello_kernel_world
+write 成功: 文件 log 写入 18 字节，占用 3 个块。
+
+命令: status
+文件系统状态:
+  总块数: 64
+  已使用块数: 7
+  空闲块数: 57
+  目录树:
+  root/
+    docs/
+      report
+    temp/
+      log
+
+命令: cd ..
+cd 成功: 返回上级目录 root。
+
+命令: delete docs/report
+delete 成功: 文件 docs/report 已删除并回收块。
+
+命令: status
+文件系统状态:
+  总块数: 64
+  已使用块数: 3
+  空闲块数: 61
+  目录树:
+  root/
+    docs/
+    temp/
+      log
+

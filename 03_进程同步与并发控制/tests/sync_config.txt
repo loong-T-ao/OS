@@ -1,0 +1,10 @@
+buffer_size=5
+producer_count=2
+consumer_count=2
+items_per_producer=4
+reader_count=3
+writer_count=2
+reads_per_reader=3
+writes_per_writer=2
+philosopher_count=5
+meals_per_philosopher=2
